@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Challenge 4</title>
+    <style>
+        .errormsg{
+            display: none;
+            font-family: Georgia, Serif;
+        }
+
+    </style>
+    
+    <script type="text/javascript">
+        function checkForm(){
+            
+            var name = document.getElementById('fullname').value;
+            if (name.length < 1){
+                // window.alert("nameerrormsg");
+                nameerrormsg.setAttribute('required', true);
+                document.getElementById("nameerrormsg").style.display = "inherit";
+                document.getElementById("nameerrormsg").style.color = "red";
+                   
+            }
+            else{
+                nameerrormsg.removeAttribute('required');
+                document.getElementById("nameerrormsg").style.display = "none";
+            }
+
+            var street = document.getElementById('streetaddr').value;
+            if (street.length < 1){
+                // window.alert("addrerrormsg");
+                addrerrormsg.setAttribute('required', true);
+                document.getElementById("addrerrormsg").style.display = "inherit";
+                document.getElementById("addrerrormsg").style.color = "red";
+                  
+            }
+            else{
+                nameerrormsg.removeAttribute('required');
+                document.getElementById("addrerrormsg").style.display = "none";
+            }
+
+        }   
+    </script>
+</head>
+<body>
+	<form  action="mailto:me@fakeemail.com" onsubmit="return checkForm();">
+  <fieldset>
+
+    <legend>Personal details</legend>
+    <p>
+      <label>
+        Full name:
+        <input type="text" name="fullname" id="fullname">
+      </label>
+    </p>
+    <p class="errormsg" id="nameerrormsg">Please enter your name above</p>
+
+    <p>
+      <label>
+        Street Address:
+        <input type="text" name="streetaddr" id="streetaddr">
+      </label>
+    </p>
+    <p class="errormsg" id="addrerrormsg">Please enter your street address</p>
+
+  </fieldset>
+  <input type="submit" value="Submit it!"> 
+</form>
+</body>
+</html>
