@@ -7,40 +7,51 @@
         .errormsg{
             display: none;
             font-family: Georgia, Serif;
+            color: "red";
         }
 
     </style>
     
     <script type="text/javascript">
         function checkForm(){
+
+          var name = document.getElementById("fullname").value;
+          if (name.length < 1){
+            nameerrormsg.setAttribute("required", true);
+            document.getElementById("nameerrormsg").style.display = "inherit";
+            document.getElementById("nameerrormsg").style.color = "red";
+          }
+
+          else{
+            nameerrormsg.removeAttribute("required");
+            document.getElementById("nameerrormsg").style.display= "none"
+          }
+
+          var street = document.getElementById("streetaddr").value;
+          if (street.length<1){
+            addrerrormsg.setAttribute("required",true);
+            document.getElementById("addrerrormsg").style.display ='inherit';
+            document.getElementById("addrerrormsg").style.color = "red";
+          }
+          else{
+            nameerrormsg.removeAttribute("required");
+            document.getElementById("addrerrormsg").style.display = "none";
+          }
+
+
+
+          var name = document.forms["myForm"]["fullname"].value;
+          var street = document.forms["myForm"]["streetaddr"].value;
+
+           if (name == "" || street == ""){
+                  return false;
+            }
+            else{
+                  return true;
+            }
             
-            var name = document.getElementById('fullname').value;
-            if (name.length < 1){
-                // window.alert("nameerrormsg");
-                nameerrormsg.setAttribute('required', true);
-                document.getElementById("nameerrormsg").style.display = "inherit";
-                document.getElementById("nameerrormsg").style.color = "red";
-                   
-            }
-            else{
-                nameerrormsg.removeAttribute('required');
-                document.getElementById("nameerrormsg").style.display = "none";
-            }
+        }
 
-            var street = document.getElementById('streetaddr').value;
-            if (street.length < 1){
-                // window.alert("addrerrormsg");
-                addrerrormsg.setAttribute('required', true);
-                document.getElementById("addrerrormsg").style.display = "inherit";
-                document.getElementById("addrerrormsg").style.color = "red";
-                  
-            }
-            else{
-                nameerrormsg.removeAttribute('required');
-                document.getElementById("addrerrormsg").style.display = "none";
-            }
-
-        }   
     </script>
 </head>
 <body>
@@ -60,7 +71,7 @@
                 
         </nav>
         
-	<form  action="mailto:me@fakeemail.com" onsubmit="return checkForm();">
+	<form name="myForm" action="mailto:me@fakeemail.com" onsubmit="return checkForm();">
   <fieldset>
 
     <legend>Personal details</legend>
